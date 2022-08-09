@@ -1,6 +1,6 @@
 # ExcuseApp
 
-<img src="screen_shots/" alt="drawing" width="300"/>
+<img src="screen_shots/demo.gif" alt="drawing" width="300"/>
 
 
 <p float="left">
