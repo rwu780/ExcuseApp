@@ -68,7 +68,9 @@ fun ExcuseScreen(
         },
     ) {
         Box(
-            modifier = modifier.background(
+            modifier = modifier
+                .fillMaxSize()
+                .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
                         background1,
