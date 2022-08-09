@@ -37,7 +37,6 @@ fun MainScreen(
                         background2
                     )
                 )
-
             )
             .fillMaxSize()
             .padding(16.dp),
@@ -68,10 +67,11 @@ fun MainScreen(
                 onClick = {
                     openDialog.value = true
                 },
+
             ) {
                 Text(
                     text = "Find Excuse",
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.h5,
                 )
             }
         }
