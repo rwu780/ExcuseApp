@@ -16,11 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rwu780.excuseapp.data.remote.ExcuseDto
+import com.rwu780.excuseapp.ui.theme.ExcuseAppTheme
 import com.rwu780.excuseapp.ui.theme.background1
 import com.rwu780.excuseapp.ui.theme.background2
+import com.rwu780.excuseapp.ui.theme.elementBackgroundGradientBrush
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -71,13 +74,13 @@ fun ExcuseScreen(
             modifier = modifier
                 .fillMaxSize()
                 .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        background1,
-                        background2
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            background1,
+                            background2
+                        )
                     )
                 )
-            )
         ) {
             if (showErrorDialog) {
                 AlertDialog(
@@ -122,24 +125,35 @@ fun ExcuseItem(
     ) {
         Column(
             modifier = modifier
+                .background(elementBackgroundGradientBrush)
                 .fillMaxWidth()
                 .padding(16.dp),
             horizontalAlignment = Alignment.Start
         ) {
-            Text(text = excuse.excuse, style = MaterialTheme.typography.h6)
+            Text(text = excuse.excuse, style = MaterialTheme.typography.h6, color = Color.White)
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Column(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
                     text = "Category: ${excuse.category}",
-                    style = MaterialTheme.typography.subtitle2
+                    style = MaterialTheme.typography.subtitle2,
+                    color = Color.White
                 )
 
             }
 
         }
     }
+}
+
+@Preview
+@Composable
+fun ExcuseItemPreview() {
+    ExcuseAppTheme {
+        ExcuseItem(excuse = ExcuseDto(1, "Excuse Here", "Test"))
+    }
+
 }

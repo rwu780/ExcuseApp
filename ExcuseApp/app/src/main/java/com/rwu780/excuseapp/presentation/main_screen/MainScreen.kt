@@ -15,11 +15,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.rwu780.excuseapp.data.remote.ExcuseDto
-import com.rwu780.excuseapp.ui.theme.background1
-import com.rwu780.excuseapp.ui.theme.background2
+import com.rwu780.excuseapp.ui.theme.*
 
 
 @Composable
@@ -31,12 +31,7 @@ fun MainScreen(
     Column(
         modifier = modifier
             .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        background1,
-                        background2
-                    )
-                )
+                brush = screen_background_gradient_brush
             )
             .fillMaxSize()
             .padding(16.dp),
@@ -63,17 +58,14 @@ fun MainScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(
+            GradientButton(
+                text = "Find Excuse",
+                gradient = card_background_gradient_brush,
+                modifier = Modifier.wrapContentWidth().padding(horizontal = 16.dp, vertical = 8.dp),
                 onClick = {
                     openDialog.value = true
-                },
-
-            ) {
-                Text(
-                    text = "Find Excuse",
-                    style = MaterialTheme.typography.h5,
-                )
-            }
+                }
+            )
         }
 
         if (openDialog.value) {
@@ -217,4 +209,41 @@ fun DropDownMenu(
             }
         }
     }
+}
+
+@Composable
+fun GradientButton(
+    text: String,
+    gradient: Brush,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = { },
+) {
+    Button(
+        modifier = modifier,
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+        contentPadding = PaddingValues(),
+        onClick = { onClick() },
+    ) {
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .then(modifier),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.h5,
+                color = Color.White
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun MainScreenPreview() {
+    ExcuseAppTheme {
+        MainScreen(onNavigate = { a, b -> })
+    }
+
 }
