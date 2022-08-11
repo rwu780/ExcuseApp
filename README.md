@@ -1,5 +1,11 @@
 # ExcuseApp
 
+## Play Store Listing
+
+## Privacy Policy
+https://www.termsfeed.com/live/7f8dce21-b4f2-415b-8f71-bad5755767b7
+
+## App
 <img src="screen_shots/demo.gif" alt="drawing" width="300"/>
 
 
