@@ -1,7 +1,9 @@
 package com.rwu780.excuseapp.data.remote
 
+import androidx.annotation.Keep
 import com.squareup.moshi.Json
 
+@Keep
 data class ExcuseDto(
     @Json(name = "id")
     val id: Int,
